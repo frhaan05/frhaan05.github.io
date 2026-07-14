@@ -333,78 +333,86 @@ section {
   color: var(--accent-cyan);
 }
 
-/* ─── EXPERIENCE TIMELINE ─── */
-#experience .timeline-wrap {
-  position: relative;
-  max-width: 800px;
+/* ─── EXPERIENCE CARDS ─── */
+#experience {
+  min-height: auto;
+}
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1100px;
   width: 100%;
 }
-.timeline-line {
-  position: absolute;
-  left: 50%; top:0; bottom: 88px;
-  width: 3px;
-  background: linear-gradient(to bottom, var(--accent-purple), var(--accent-cyan));
-  transform: translateX(-50%);
-}
-.timeline-item {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: calc(50% + 36px);
-  margin-bottom: 100px;
+.experience-card {
   position: relative;
-}
-.timeline-item.right {
-  justify-content: flex-start;
-  padding-right: 0;
-  padding-left: calc(50% + 36px);
-}
-.timeline-dot {
-  position: absolute;
-  left: 50%; top: 0px;
-  transform: translateX(-50%);
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: var(--accent-purple);
-  border: 3px solid var(--bg-deep);
-  box-shadow: 0 0 10px var(--accent-purple);
-  z-index:2;
-}
-.timeline-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 22px 24px;
-  max-width: 340px;
+  border-radius: 16px;
+  padding: 24px 26px;
   transition: all .3s;
+  overflow: hidden;
 }
-.timeline-card:hover {
+.experience-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+}
+.experience-card:hover {
   border-color: rgba(100,150,255,0.3);
   box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  transform: translateY(-4px);
 }
-.timeline-card-header {
-  display: flex; align-items: center; gap: 12px;
-  margin-bottom: 10px;
+.experience-badge {
+  display: inline-block;
+  font-size: .72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: rgba(0,229,255,0.08);
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,229,255,0.2);
+  margin-bottom: 12px;
 }
-.timeline-card-icon {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: rgba(124,77,255,0.2);
-  display: flex; align-items:center; justify-content:center;
+.experience-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 8px;
+}
+.experience-company {
+  font-size: .92rem;
+  font-weight: 600;
   color: var(--accent-purple);
-  font-size: .85rem;
+  margin-bottom: 6px;
 }
-.timeline-card-title { font-weight: 700; font-size: 1rem; color: var(--text-white); }
-.timeline-card-company { font-size: .82rem; color: var(--accent-purple); }
-.timeline-card-date { font-size: .78rem; color: var(--text-muted); margin-bottom: 10px; }
-.timeline-card-desc { font-size: .82rem; color: var(--text-muted); line-height:1.6; margin-bottom: 12px; }
-.coming-soon-badge {
-  text-align: center;
-  padding: 30px;
+.experience-date {
+  font-size: .8rem;
   color: var(--text-muted);
-  font-size: .9rem;
-  font-style: italic;
+  margin-bottom: 14px;
 }
-.coming-soon-badge i { display:block; font-size:2rem; margin-bottom:10px; color: var(--accent-purple); }
+.experience-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.experience-list li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--text-muted);
+  font-size: .84rem;
+  line-height: 1.6;
+}
+.experience-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+}
 
 /* ─── TECH STACK ─── */
 #techstack .tech-grid {
